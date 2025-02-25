@@ -10,7 +10,7 @@ assignees: ''
 resume_rapide_de_la_tache
 
 ### Informations complémentaires
- - a
+ - 
 
 ### Problèmes rencontrés
 RAS
