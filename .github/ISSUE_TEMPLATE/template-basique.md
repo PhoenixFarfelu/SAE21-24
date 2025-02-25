@@ -1,12 +1,12 @@
 ---
 name: template basique
 about: template simple pour automatiser la création d'éléments dans la roadmap
-title: ''
+title: 'Titre_a_definir'
 assignees: ''
 
 ---
 
-# {{title}}
+# Titre
 resume_rapide_de_la_tache
 
 ### Informations complémentaires
