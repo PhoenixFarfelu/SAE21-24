@@ -1,4 +1,11 @@
 blank_issues_enabled: true
+name: template
+description: creation de nouvel element
+title: ""
+labels: []
+projects: []
+assignees:
+  - lukackx
 body:
   - type: markdown
     attributes: 
