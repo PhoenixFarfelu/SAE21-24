@@ -6,7 +6,7 @@ assignees: ''
 
 ---
 
-# {{ title }}
+# {{title}}
 resume_rapide_de_la_tache
 
 ### Informations complémentaires
