@@ -1,17 +1,19 @@
 ---
 name: template basique
-about: resume_rapide_de_la_tache
+about: template simple pour automatiser la création d'éléments dans la roadmap
 title: ''
-labels: ''
 assignees: ''
 
 ---
 
-## Informations complémentaires
+# Titre
+resume_rapide_de_la_tache
+
+### Informations complémentaires
  - a
 
-## Problèmes rencontrés
+### Problèmes rencontrés
 RAS
 
-## Solutions apportées
+### Solutions apportées
 RAS
