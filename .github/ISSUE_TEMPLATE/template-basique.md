@@ -1,5 +1,4 @@
 ---
-blank_issues_enabled: false
 name: template basique
 about: template simple pour automatiser la création d'éléments dans la roadmap
 title: 'Titre_a_definir'
