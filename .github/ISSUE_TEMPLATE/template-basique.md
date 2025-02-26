@@ -12,6 +12,12 @@ relationships: ''
 # Titre
 resume_rapide_de_la_tache
 
+### Temps à consacrer à la tâche
+XX heures
+
+### Temps réellement consacré à la tâche
+XX heures
+
 ### Informations complémentaires
  - 
 
