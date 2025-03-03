@@ -1,0 +1,120 @@
+
+!
+! Last configuration change at 13:12:16 UTC Thu Feb 27 2025
+! NVRAM config last updated at 15:06:46 UTC Thu Feb 27 2025
+! NVRAM config last updated at 15:06:46 UTC Thu Feb 27 2025
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R_Internet
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable password bonjour
+!
+no aaa new-model
+memory-size iomem 10
+!
+no ipv6 cef
+ip source-route
+ip cef
+!
+!
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+crypto pki token default removal timeout 0
+!
+!
+license udi pid CISCO2901/K9 sn FCZ161621SK
+!
+!
+!
+!
+!
+!
+!
+!
+interface Embedded-Service-Engine0/0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/0
+ ip address 192.168.1.254 255.255.255.0
+ ip nat inside
+ ip virtual-reassembly in
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ ip address 172.17.0.52 255.255.255.0
+ ip nat outside
+ ip virtual-reassembly in
+ duplex auto
+ speed auto
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+ip nat pool pat 172.17.0.51 172.17.0.52 netmask 255.255.255.0
+ip nat inside source list 1 pool pat overload
+ip route 0.0.0.0 0.0.0.0 172.17.0.254
+ip route 192.168.1.0 255.255.255.0 192.168.1.12
+ip route 192.168.99.0 255.255.255.0 192.168.99.254
+ip route 192.168.99.0 255.255.255.0 192.168.1.4
+ip route 192.168.99.0 255.255.255.0 192.168.1.1
+ip route 192.168.111.0 255.255.255.128 192.168.1.1
+ip route 192.168.111.128 255.255.255.128 192.168.1.1
+ip route 192.168.121.0 255.255.255.128 192.168.1.12
+ip route 192.168.121.128 255.255.255.128 192.168.1.12
+ip route 192.168.131.0 255.255.255.128 192.168.1.133
+ip route 192.168.131.128 255.255.255.128 192.168.1.133
+ip route 192.168.141.0 255.255.255.128 192.168.1.4
+ip route 192.168.141.128 255.255.255.128 192.168.1.4
+!
+access-list 1 deny   192.168.99.0 0.0.0.255
+access-list 1 permit 192.168.131.0 0.0.0.127
+access-list 1 permit 192.168.131.128 0.0.0.127
+access-list 1 permit 192.168.1.0 0.0.0.255
+access-list 1 permit 192.168.121.0 0.0.0.127
+access-list 1 permit 192.168.121.128 0.0.0.127
+access-list 1 permit 192.168.141.0 0.0.0.127
+access-list 1 permit 192.168.141.128 0.0.0.127
+access-list 1 permit 192.168.111.0 0.0.0.127
+access-list 1 permit 192.168.111.128 0.0.0.127
+!
+!
+!
+control-plane
+!
+!
+!
+line con 0
+line aux 0
+line 2
+ no activation-character
+ no exec
+ transport preferred none
+ transport input all
+ transport output pad telnet rlogin lapb-ta mop udptn v120 ssh
+ stopbits 1
+line vty 0 4
+ password bonjour
+ login
+ transport input all
+line vty 5 15
+ password bonjour
+ login
+ transport input all
+!
+scheduler allocate 20000 1000
+end
