@@ -93,7 +93,7 @@ interface Vlan131
  no ip route-cache
 !
 interface Vlan132
- ip address 192.168.132.253 255.255.255.128
+ ip address 192.168.131.253 255.255.255.128
  no ip route-cache
 !
 ip http server
