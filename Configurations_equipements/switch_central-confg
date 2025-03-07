@@ -56,7 +56,7 @@ crypto pki certificate chain TP-self-signed-513814016
 !
 spanning-tree mode pvst
 spanning-tree extend system-id
-spanning-tree vlan 99 priority 0
+spanning-tree vlan 1,99 priority 0
 !
 vlan internal allocation policy ascending
 !
