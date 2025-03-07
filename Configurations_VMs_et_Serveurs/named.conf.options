@@ -1,0 +1,9 @@
+options {
+	directory "/var/cache/bind";
+	allow-query  { any; };
+	forward first;
+	forwarders {
+		129.20.211.22;
+		129.20.211.23;
+	};
+};
