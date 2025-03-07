@@ -76,10 +76,12 @@ vlan 211-212
 !
 !
 interface FastEthernet0/1
+ switchport trunk native vlan 50
  switchport trunk allowed vlan 99,131,132
  switchport mode trunk
 !
 interface FastEthernet0/2
+ switchport trunk native vlan 50
  switchport trunk allowed vlan 99,131,132
  switchport mode trunk
 !
@@ -136,7 +138,7 @@ interface GigabitEthernet0/1
 interface GigabitEthernet0/2
 !
 interface Vlan1
- ip address 192.168.1.131 255.255.255.0
+ no ip address
  no ip route-cache
 !
 interface Vlan99
@@ -144,11 +146,11 @@ interface Vlan99
  no ip route-cache
 !
 interface Vlan131
- ip address 192.168.131.124 255.255.255.128
+ no ip address
  no ip route-cache
 !
 interface Vlan132
- ip address 192.168.132.252 255.255.255.128
+ no ip address
  no ip route-cache
 !
 ip http server

@@ -1,5 +1,8 @@
 
 !
+! Last configuration change at 17:39:39 UTC Thu Mar 6 2025 by user2
+! NVRAM config last updated at 17:55:16 UTC Thu Mar 6 2025 by user
+!
 version 12.2
 no service pad
 service timestamps debug uptime
@@ -8,18 +11,27 @@ no service password-encryption
 !
 hostname SWR131
 !
+no logging console
 enable password bonjour
 !
-no aaa new-model
+username user secret 5 $1$wo5Y$F9/8/i0AxFA0.yXhcT22J0
+username user2 secret 5 $1$ao5g$JXmVZEyIJjLM905e0G/MW/
+aaa new-model
+!
+aaa session-id common
+clock timezone UTC 1
 system mtu routing 1500
 ip subnet-zero
 ip routing
 !
+login block-for 60 attempts 3 within 5
 !
 !
 !
 !
 !
+errdisable recovery cause storm-control
+errdisable recovery interval 30
 no file verify auto
 !
 spanning-tree mode pvst
@@ -32,17 +44,23 @@ vlan internal allocation policy ascending
 !
 interface FastEthernet0/1
  switchport trunk encapsulation dot1q
+ switchport trunk native vlan 50
  switchport trunk allowed vlan 99,131,132
  switchport mode trunk
 !
 interface FastEthernet0/2
  switchport trunk encapsulation dot1q
+ switchport trunk native vlan 50
  switchport trunk allowed vlan 99,131,132
  switchport mode trunk
 !
 interface FastEthernet0/3
  switchport access vlan 99
  switchport mode access
+ storm-control broadcast level 15.00
+ storm-control multicast level 15.00
+ storm-control unicast level 15.00
+ storm-control action shutdown
 !
 interface FastEthernet0/4
  switchport trunk encapsulation dot1q
@@ -51,12 +69,28 @@ interface FastEthernet0/4
  switchport mode trunk
 !
 interface FastEthernet0/5
+ storm-control broadcast level 15.00
+ storm-control multicast level 15.00
+ storm-control unicast level 15.00
+ storm-control action shutdown
 !
 interface FastEthernet0/6
+ storm-control broadcast level 15.00
+ storm-control multicast level 15.00
+ storm-control unicast level 15.00
+ storm-control action shutdown
 !
 interface FastEthernet0/7
+ storm-control broadcast level 15.00
+ storm-control multicast level 15.00
+ storm-control unicast level 15.00
+ storm-control action shutdown
 !
 interface FastEthernet0/8
+ storm-control broadcast level 15.00
+ storm-control multicast level 15.00
+ storm-control unicast level 15.00
+ storm-control action shutdown
 !
 interface GigabitEthernet0/1
 !
@@ -82,7 +116,9 @@ ip http server
 ip http secure-server
 !
 !
+!
 no cdp run
+radius-server source-ports 1645-1646
 !
 control-plane
 !
@@ -90,8 +126,8 @@ control-plane
 line con 0
 line vty 0 4
  password bonjour
- login
 line vty 5 15
- login
 !
+ntp clock-period 36029229
+ntp server 192.168.1.1
 end
